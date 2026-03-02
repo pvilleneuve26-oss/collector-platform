@@ -28,10 +28,14 @@ export default function Home() {
     };
   }, []);
 
-  const handleLogin = async () => {
-    await supabase.auth.signInWithOtp({
-      email,
-    });
+  if (email !== "pvilleneuve26@gmail.com") {
+  alert("Access denied.");
+  return;
+}
+
+await supabase.auth.signInWithOtp({
+  email,
+});
     alert("Check your email for login link!");
   };
 
